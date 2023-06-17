@@ -18,10 +18,12 @@ export class StockDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const symbol = params.get('symbol')
-      if (symbol !== null) {
-        this.symbol = symbol
-        this.getStockData()
+      if (params && params.get) {
+        const symbol = params.get('symbol')
+        if (symbol !== null) {
+          this.symbol = symbol
+          this.getStockData()
+        }
       }
     })
   }
