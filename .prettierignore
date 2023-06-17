@@ -1,0 +1,17 @@
+node_modules
+.vscode
+.idea
+build
+package-lock.json
+yarn.lock
+README.md
+coverage
+.gitignore
+.editorconfig
+.npmrc
+.github
+.next
+*.yaml
+/out/
+.env*
+.angular
