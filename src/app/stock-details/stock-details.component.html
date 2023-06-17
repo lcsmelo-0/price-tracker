@@ -1,0 +1,18 @@
+<div *ngIf="stockData">
+  <h2>Price Stock - {{ stockData.chart.result[0].meta.symbol }}</h2>
+  <p>Price variation from first trading day: {{ calculatePriceVariation(stockData) }}%</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Open</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quote of stockData.chart.result[0].indicators.quote[0].open">
+        <td>{{ formatDate(quote.date) }}</td>
+        <td>{{ quote }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
