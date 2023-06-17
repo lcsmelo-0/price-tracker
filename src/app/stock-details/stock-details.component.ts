@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { StockService } from '../stock.service'
 
 @Component({
@@ -8,11 +9,22 @@ import { StockService } from '../stock.service'
 })
 export class StockDetailsComponent implements OnInit {
   stockData: any
+  symbol: string = ''
 
-  constructor(private stockService: StockService) {}
+  constructor(private route: ActivatedRoute, private stockService: StockService) {}
 
   ngOnInit(): void {
-    this.stockService.getStockData('PETR4.SA').subscribe(data => {
+    this.route.paramMap.subscribe(params => {
+      const symbol = params.get('symbol')
+      if (symbol !== null) {
+        this.symbol = symbol
+        this.getStockData()
+      }
+    })
+  }
+
+  getStockData(): void {
+    this.stockService.getStockData(this.symbol).subscribe(data => {
       this.stockData = data
       console.log(this.stockData)
     })

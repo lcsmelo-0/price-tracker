@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { StockDetailsComponent } from './stock-details/stock-details.component'
 
-const routes: Routes = [{ path: '', component: StockDetailsComponent }]
+const routes: Routes = [{ path: ':symbol', component: StockDetailsComponent }]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
