@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { StockService } from '../stock.service'
+import { MatTableDataSource } from '@angular/material/table'
 
 @Component({
   selector: 'app-stock-details',
@@ -10,6 +11,8 @@ import { StockService } from '../stock.service'
 export class StockDetailsComponent implements OnInit {
   stockData: any
   symbol: string = ''
+  displayedColumns: string[] = ['date', 'open']
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([])
 
   constructor(private route: ActivatedRoute, private stockService: StockService) {}
 
@@ -26,6 +29,7 @@ export class StockDetailsComponent implements OnInit {
   getStockData(): void {
     this.stockService.getStockData(this.symbol).subscribe(data => {
       this.stockData = data
+      this.dataSource.data = this.stockData.chart.result[0].indicators.quote[0].open
       console.log(this.stockData)
     })
   }
