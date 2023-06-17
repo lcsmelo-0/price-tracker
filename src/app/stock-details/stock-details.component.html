@@ -1,15 +1,30 @@
 <div *ngIf="stockData">
   <h2>Price Stock - {{ stockData.chart.result[0].meta.symbol }}</h2>
-  <p class="price-variation">Price variation from first trading day: {{ calculatePriceVariation(stockData) }}%</p>
+  <p class="price-variation">Price variation from first trading day: {{ calculateVariationFirstDay(stockData) }}%</p>
   <table mat-table [dataSource]="dataSource" class="custom-mat-table">
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Date</th>
-      <td mat-cell *matCellDef="let quote">{{ formatDate(quote.date) }}</td>
+    <ng-container matColumnDef="day">
+      <th mat-header-cell *matHeaderCellDef>Day</th>
+      <td mat-cell *matCellDef="let data">{{ data.day }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="open">
-      <th mat-header-cell *matHeaderCellDef>Open</th>
-      <td mat-cell *matCellDef="let quote">{{ quote }}</td>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let data">{{ data.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef>Value</th>
+      <td mat-cell *matCellDef="let data">{{ data.value }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="variationD1">
+      <th mat-header-cell *matHeaderCellDef>Variation D-1</th>
+      <td mat-cell *matCellDef="let data">{{ data.variationD1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="variationFirstDay">
+      <th mat-header-cell *matHeaderCellDef>Variation First Day</th>
+      <td mat-cell *matCellDef="let data">{{ data.variationFirstDay }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
