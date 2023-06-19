@@ -61,7 +61,6 @@ export class StockDetailsComponent implements OnInit {
       }
 
       this.dataSource.data = formattedData
-      console.log(this.stockData)
     })
   }
 

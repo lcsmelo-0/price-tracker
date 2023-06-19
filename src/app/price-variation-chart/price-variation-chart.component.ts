@@ -26,17 +26,14 @@ export class PriceVariationChartComponent implements OnInit, OnChanges {
     }
 
     const containerWidth = this.chartContainer.nativeElement.offsetWidth
-    const containerHeight = 400 // Defina a altura desejada para o gráfico
+    const containerHeight = 400
 
-    // Limpa o contêiner do gráfico antes de desenhar
     d3.select(this.chartContainer.nativeElement).selectAll('*').remove()
 
-    // Configuração do gráfico
     const margin = { top: 20, right: 20, bottom: 30, left: 50 }
     const width = containerWidth - margin.left - margin.right
     const height = containerHeight - margin.top - margin.bottom
 
-    // Cria a área do gráfico
     const svg = d3
       .select(this.chartContainer.nativeElement)
       .append('svg')
@@ -45,34 +42,26 @@ export class PriceVariationChartComponent implements OnInit, OnChanges {
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`)
 
-    // Configura a escala do eixo X
     const xScale = d3
       .scaleBand()
       .range([0, width])
       .padding(0.1)
       .domain(this.data.map(d => d.day.toString()))
 
-    // Configura a escala do eixo Y
     const yScale = d3.scaleLinear().range([height, 0])
 
-    // Define o domínio do eixo Y com base nos valores de variação
     yScale.domain([
       d3.min(this.data, d => +d.variationD1.replace('%', '')) || 0,
       d3.max(this.data, d => +d.variationD1.replace('%', '')) || 100,
     ])
 
-    // Configura os eixos X e Y
     const xAxis = d3.axisBottom(xScale)
     const yAxis = d3.axisLeft(yScale)
 
-    // Adiciona o eixo X
     svg.append('g').attr('class', 'x-axis').attr('transform', `translate(0, ${height})`).call(xAxis)
 
-    // Adiciona o eixo Y
     svg.append('g').attr('class', 'y-axis').call(yAxis)
 
-    // Adiciona as barras do gráfico
-    console.log(JSON.stringify(this.data))
     svg
       .selectAll('.bar')
       .data(this.data)
