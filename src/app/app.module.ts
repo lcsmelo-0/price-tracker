@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { StockDetailsComponent } from './stock-details/stock-details.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { PriceVariationChartComponent } from './price-variation-chart/price-variation-chart.component'
 
 @NgModule({
-  declarations: [AppComponent, StockDetailsComponent],
+  declarations: [AppComponent, StockDetailsComponent, PriceVariationChartComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MatTableModule],
   providers: [],
   bootstrap: [AppComponent],

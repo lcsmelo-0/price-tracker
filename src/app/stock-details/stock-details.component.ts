@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
 import { ActivatedRoute } from '@angular/router'
 import { StockService } from '../stock.service'
-import { MatTableDataSource } from '@angular/material/table'
 
 @Component({
   selector: 'app-stock-details',
@@ -34,12 +34,12 @@ export class StockDetailsComponent implements OnInit {
       const timestamps: number[] = this.stockData.chart.result[0].timestamp
       const quotes: number[] = this.stockData.chart.result[0].indicators.quote[0].open
       const filteredData = timestamps
-        .map((timestamp: number, index: number) => ({ timestamp, quote: quotes[index] }))
+        ?.map((timestamp: number, index: number) => ({ timestamp, quote: quotes[index] }))
         .filter((data: { timestamp: number; quote: number }) => data.quote !== null && data.quote !== undefined)
         .reverse()
         .slice(0, 30)
 
-      const formattedData = filteredData.map((data: { timestamp: number; quote: number }, index: number) => ({
+      const formattedData = filteredData?.map((data: { timestamp: number; quote: number }, index: number) => ({
         day: index + 1,
         date: this.formatDate(data.timestamp * 1000),
         value: data.quote,
