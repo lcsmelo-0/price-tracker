@@ -1,27 +1,58 @@
 # PriceTracker
+Preço do Ativo - Consulta e Variação
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+## Descrição
+Este projeto consiste em uma aplicação Angular que consulta o preço do ativo na API do Yahoo Finance e exibe o valor do ativo nos últimos 30 pregões, juntamente com a variação do preço no período. Além disso, é apresentado um gráfico visualizando a variação do preço ao longo do tempo.
 
-## Development server
+A consulta do preço do ativo é realizada através da API do Yahoo Finance, utilizando a URL específica para o ativo desejado. Por exemplo, o ativo PETR4 pode ser consultado através da URL: https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+A página desenvolvida em Angular apresenta o valor de abertura do ativo nos últimos 30 pregões e calcula a variação percentual do preço em relação ao dia anterior. Os dados são exibidos em uma tabela e também são representados graficamente em um gráfico de linha.
 
-## Code scaffolding
+## Tecnologias Utilizadas
+- Angular
+- TypeScript
+- HTML
+- SCSS
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionalidades
+1. Consulta o preço do ativo na API do Yahoo Finance
+2. Exibe o valor do ativo nos últimos 30 pregões
+3. Calcula a variação percentual do preço em relação ao dia anterior
+4. Apresenta os dados em uma tabela e em um gráfico de linha
 
-## Build
+## Instalação
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Certifique-se de ter o Node.js instalado: [https://nodejs.org](https://nodejs.org)
+2. Clone o repositório: `git clone https://github.com/seu-usuario/seu-projeto.git`
+3. Acesse o diretório do projeto: `cd seu-projeto`
+4. Instale as dependências: `npm install`
 
-## Running unit tests
+## Executando o Projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Execute o seguinte comando para iniciar o servidor de desenvolvimento:
 
-## Running end-to-end tests
+``
+npm start
+``
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Acesse o projeto no navegador através da URL: `http://localhost:4200`
 
-## Further help
+## Executando Testes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Execute o seguinte comando para executar os testes:
+
+``
+npm test
+``
+
+## Contribuição
+
+1. Faça o fork do projeto
+2. Crie uma nova branch: `git checkout -b minha-branch`
+3. Faça as alterações desejadas e faça commit: `git commit -m 'Adicionar nova funcionalidade'`
+4. Faça o push para o repositório remoto: `git push origin minha-branch`
+5. Envie um pull request para revisão
+
+## Autor
+- Lucas de Melo Lima - https://github.com/lcsmelo-0
+- Linkedin - https://www.linkedin.com/in/lucasmelo18/
